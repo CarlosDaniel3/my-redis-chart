@@ -17,4 +17,4 @@ spec:
         image: redis:latest
         ports:
         - containerPort: 6379
-        command: ["redis-server", "--replicaof", "IP_ADDR", "6379", "--slave-read-only", "no"]
+        command: [ "redis-server", "--slaveof", "redis-master", "6379" ]
