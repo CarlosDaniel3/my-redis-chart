@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-slave
+spec:
+  replicas: {{ .Values.slave.replicaCount }}
+  selector:
+    matchLabels:
+      role: slave
+  template:
+    metadata:
+      labels:
+        role: slave
+    spec:
+      containers:
+      - name: redis-slave
+        image: redis:latest
+        ports:
+        - containerPort: 6379
+        command: ["redis-server", "--replicaof", "IP_ADDR", "6379", "--slave-read-only", "no"]

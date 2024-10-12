@@ -1,0 +1,10 @@
+global:
+  image:
+    repository: redis
+    tag: "latest"
+    
+master:
+  replicaCount: 3
+
+slave:
+  replicaCount: 3
