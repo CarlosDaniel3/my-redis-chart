@@ -17,4 +17,11 @@ spec:
         image: redis:latest
         ports:
         - containerPort: 6379
+        resources:
+          requests:
+            cpu: {{ .Values.slave.resources.requests.cpu }}
+            memory: {{ .Values.slave.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.slave.resources.limits.cpu }}
+            memory: {{ .Values.slave.resources.limits.memory }}
         command: [ "redis-server", "--slaveof", "redis-master", "6379" ]
