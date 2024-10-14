@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: redis-master
 spec:
@@ -16,7 +16,7 @@ spec:
         - name: redis-master
           image: "{{ .Values.global.image.repository }}:{{ .Values.global.image.tag }}"
           ports:
-            - containerPort: 80
+            - containerPort: 6379
           resources:
             requests:
               cpu: {{ .Values.master.resources.requests.cpu }}
@@ -24,3 +24,15 @@ spec:
             limits:
               cpu: {{ .Values.master.resources.limits.cpu }}
               memory: {{ .Values.master.resources.limits.memory }}
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+    spec:
+      accessModes: 
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: {{ .Values.master.storage }}

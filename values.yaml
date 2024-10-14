@@ -5,6 +5,7 @@ global:
     
 master:
   replicaCount: 3
+  storage: 2Gi
   resources:
     requests:
       cpu: 250m
