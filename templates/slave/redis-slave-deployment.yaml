@@ -24,4 +24,4 @@ spec:
           limits:
             cpu: {{ .Values.slave.resources.limits.cpu }}
             memory: {{ .Values.slave.resources.limits.memory }}
-        command: [ "redis-server", "--slaveof", "redis-master", "6379" ]
+        command: [ "redis-server", "--slaveof", "redis", "6379" ]
