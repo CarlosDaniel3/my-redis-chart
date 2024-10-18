@@ -46,9 +46,9 @@ Listagem dos pods que possuem a role "slave"
 kubectl get po -l role=slave
 ```
 
-## Verificando o funcionamento do redis e a persistência de dados
+# Verificando o funcionamento do redis e a persistência de dados
 
-# 1 - Teste de Inserção de Dados no Redis Master
+## 1 - Teste de Inserção de Dados no Redis Master
 Acesso ao pod do Redis master
 ```
 kubectl exec -it <redis-master-pod> -- redis-cli
@@ -61,7 +61,7 @@ Validando se o valor foi inserido corretamente
 ```
 GET mykey
 ```
-# 2 - Verificação da Persistência de Dados nos Volumes
+## 2 - Verificação da Persistência de Dados nos Volumes
 Esse teste poderá ser feito no redis-master ou no slave. Iremos utilizar nesse exemplo o master seguindo os passos abaixo
 
 Acesso a um pod do redis-master
@@ -81,12 +81,12 @@ Resultado Esperado
     <img align="center" alt="result" height="150px" width="500px" src="https://github.com/CarlosDaniel3/my-redis-chart/blob/main/assets/data-result.png">
 </div>
 
-# 3 - Verificação dos Volumes Montados
+## 3 - Verificação dos Volumes Montados
 Confirmação da montagem do PVC no diretório /data
 ```
 kubectl describe pod <redis-master-pod> | grep data
 ```
-# 4 - Verificação após o reiniciamento dos pods
+## 4 - Verificação após o reiniciamento dos pods
 Deleção de um pod redis-master
 ```
 kubectl delete pod <redis-master-pod>
@@ -100,7 +100,7 @@ Verificação da persistência dos dados
 GET mykey
 ```
 
-# 5 - Verificação do PersistentVolumeClaim (PVC)
+## 5 - Verificação do PersistentVolumeClaim (PVC)
 Listagem dos PVCs
 ```
 kubectl get pvc
