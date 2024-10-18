@@ -110,13 +110,3 @@ Descrição do PVC utilizado pelo Redis
 kubectl describe pvc <redis-master-pvc>
 ```
 Caso o PVC esteja vinculado a um PersistentVolume(PV) e o status estiver como Bound, a persistência de dados foi feita com sucesso
-
-## 6 - Uso do Redis Slave para Checar Replicação
-Acesso a um pod redis-slave
-```
-kubectl exec -it <redis-slave-pod> -- redis-cli
-```
-Obtenção do valor armazenado no redis-master
-```
-GET mykey
-```
