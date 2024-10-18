@@ -78,5 +78,5 @@ ls
 ```
 Resultado Esperado
 <div style="text-align: center"><br>
-    <img align="center" alt="result" height="400px" width="700px" src="https://github.com/CarlosDaniel3/my-redis-chart/blob/main/assets/data-result.png">
+    <img align="center" alt="result" height="200px" width="200px" src="https://github.com/CarlosDaniel3/my-redis-chart/blob/main/assets/data-result.png">
 </div>
